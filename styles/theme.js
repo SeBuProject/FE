@@ -9,7 +9,9 @@ const fontSize = {
 };
 
 const color = {
+  greenfont: '#28883B',
   black: '#262626',
+  blue: '#4174F5',
   gray90: '#4a4a4a',
   gray85: '#5c5c5c',
   gray80: '#898989',
@@ -19,6 +21,8 @@ const color = {
   gray30: '#e6e6e6',
   gray20: '#f6f6f6',
   gray10: '#f1f1f1',
+  gray9: '#5E6064',
+  gray7: '#9C9D9F',
   grayWhite: '#FCFCFF',
   white: '#fff',
   navy: '#17194a',

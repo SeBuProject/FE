@@ -6,7 +6,7 @@ const ChangerContainer = styled.div`
   margin:0 auto;
   width: 100%;
 `;
-const ExcelFont = styled.span`
+const ExcelFont = styled.p`
   color: ${({ theme }) => theme.color.greenfont};
   font-size: 1.25rem;
   margin-left: 2px;
@@ -22,11 +22,12 @@ const First = styled.div`
   display: inline-flex;
 `;
 
-const Second = styled.div`
+const Second = styled.p`
   font-family: 'Pretendard Variable';
   font-style: normal;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 40px;
+  margin-top: 1rem;
   margin-bottom: 2.5rem;
 `;
 

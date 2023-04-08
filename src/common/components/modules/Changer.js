@@ -9,17 +9,18 @@ const ChangerContainer = styled.div`
 const ExcelFont = styled.p`
   color: ${({ theme }) => theme.color.greenfont};
   font-size: 1.25rem;
-  margin-left: 2px;
   font-family: 'Pretendard Variable';
   font-style: normal;
   font-weight: 600;
+  margin: 2px 0px 0 2px;
 `;
 
 const First = styled.div`
-  text-align: center;
-  padding-top: 3.625rem;
+  padding-top: 3.75rem;
   vertical-align: middle;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Second = styled.p`

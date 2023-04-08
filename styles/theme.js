@@ -22,6 +22,7 @@ const color = {
   gray20: '#f6f6f6',
   gray10: '#f1f1f1',
   gray9: '#5E6064',
+  gray8: '#6F7175',
   gray7: '#9C9D9F',
   grayWhite: '#FCFCFF',
   white: '#fff',

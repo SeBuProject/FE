@@ -27,7 +27,7 @@ const Second = styled.p`
   font-family: 'Pretendard Variable';
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-top: 1rem;
   margin-bottom: 2.5rem;
 `;
@@ -81,7 +81,7 @@ const Changer = () => {
   return (
     <ChangerContainer>
       <First>
-        <img src='assets/img_excel.svg' alt='엑셀'/>
+        <img src='assets/img_excel.svg' alt='엑셀' />
         <ExcelFont>
           엑셀용
         </ExcelFont>
@@ -91,17 +91,18 @@ const Changer = () => {
       </Second>
       <Third>
         <UploadImg>
-          <img src='assets/img_excel_upload_before.svg' alt='엑셀'/>
+          <img src='assets/img_excel_upload_before.svg' alt='엑셀' />
         </UploadImg>
         <UploadWord>
           {'사업자등록번호가 입력된 파일만 올리면'}
-          <br/>
+          <br />
           {'사업자 관련된 정보를 쉽게 불러올 수 있습니다.'}
         </UploadWord>
         <UploadButton>
           <ButtonWord>
             내 파일 불러오기
           </ButtonWord>
+          {/* <input ref={input} type='file' style={{ display: 'none' }} /> */}
         </UploadButton>
       </Third>
     </ChangerContainer>

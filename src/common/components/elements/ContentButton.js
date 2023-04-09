@@ -15,11 +15,12 @@ const StyledButton = styled.button`
     border-radius: 100px;
 
     /*크기*/
-    height: 2.25rem;
+    height: 5rem;
+    width: 42rem;
     font-size: 1rem;
 
     /*색상 */
-     background: ${(props) => props.background || 'white'};
+     background: ${({ theme }) => theme.color.blue1};
     // &:hover{
     //     opacity:0.5;
     // }
@@ -32,9 +33,9 @@ const StyledButton = styled.button`
         margin-left: 1rem;
     }
 `
-function Button({ children, ...rest }) {
+function ContentButton({ children, ...rest }) {
     return <StyledButton {...rest}>{children}</StyledButton>
 }
 
 
-export default Button;
+export default ContentButton;

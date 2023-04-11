@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRef, useState } from 'react';
+import { fileUpload } from '@/pages/api/apis';
 const ChangerContainer = styled.div`
   max-width: 64rem;
   text-align: center;
@@ -78,6 +80,26 @@ const ButtonWord = styled.span`
 `;
 
 const Changer = () => {
+
+  const [file, setFile] = useState('');
+  const fileInput = useRef(null);
+
+  const handleButtonClick = e => {
+    fileInput.current.click();
+  }
+  const handleChange = e => {
+    if (e.target.files[0] != undefined) {
+      let formData = new FormData();
+      formData.append('file', e.target.files[0]);
+      console.log(formData);
+      fileUpload(formData).then((res) => {
+        console.log(res);
+      });
+      console.log(e.target.files[0]);
+      setFile(e.target.files[0]);
+    }
+  }
+
   return (
     <ChangerContainer>
       <First>
@@ -98,11 +120,11 @@ const Changer = () => {
           <br />
           {'사업자 관련된 정보를 쉽게 불러올 수 있습니다.'}
         </UploadWord>
-        <UploadButton>
+        <UploadButton onClick={handleButtonClick}>
           <ButtonWord>
             내 파일 불러오기
           </ButtonWord>
-          {/* <input ref={input} type='file' style={{ display: 'none' }} /> */}
+          <input ref={fileInput} type='file' id='upload' name='upload' accept='.xls,.xlsx' style={{ display: 'none' }} onChange={handleChange} />
         </UploadButton>
       </Third>
     </ChangerContainer>

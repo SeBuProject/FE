@@ -11,3 +11,17 @@ export const fileUpload = async (data) => {
         .then((res) => res.json())
         .then((res) => res);
 };
+
+//파일 엑셀 다운로드
+export const fileDownload = async (data) => {
+    const apiUrl = 'http://localhost:8081/api/v1/contents/downloadBusinessStatusInqrExcel';
+    return await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => res.json())
+        .then((res) => res);
+};

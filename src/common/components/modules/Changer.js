@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useRef, useState } from 'react';
-import { fileUpload } from '@/pages/api/apis';
+import { fileUpload, fileDownload } from '@/pages/api/apis';
 const ChangerContainer = styled.div`
   max-width: 64rem;
   text-align: center;
@@ -94,16 +94,24 @@ const Changer = () => {
       console.log(formData);
       fileUpload(formData).then((res) => {
         console.log(res);
+        setFile(res.data);
       });
       console.log(e.target.files[0]);
-      setFile(e.target.files[0]);
     }
+  }
+
+  const download = () => {
+    console.log(file);
+    fileDownload(file).then((res) => {
+      console.log(res);
+      alert('다운로드 되었습니다.');
+    });
   }
 
   return (
     <ChangerContainer>
       <First>
-        <img src='assets/img_excel.svg' alt='엑셀' />
+        <img src='assets/img_excel.svg' alt='엑셀용' />
         <ExcelFont>
           엑셀용
         </ExcelFont>
@@ -113,19 +121,31 @@ const Changer = () => {
       </Second>
       <Third>
         <UploadImg>
-          <img src='assets/img_excel_upload_before.svg' alt='엑셀' />
+          {file === '' && <img src='assets/img_excel_upload_before.svg' alt='업로드 전' />}
+          {file != '' && <img src='assets/img_excel_upload_after.svg' alt='업로드 후' />}
         </UploadImg>
-        <UploadWord>
+        {file === '' && <UploadWord>
           {'사업자등록번호가 입력된 파일만 올리면'}
           <br />
           {'사업자 관련된 정보를 쉽게 불러올 수 있습니다.'}
-        </UploadWord>
-        <UploadButton onClick={handleButtonClick}>
+        </UploadWord>}
+        {file != '' && <UploadWord>
+          {'파일이 변환되었습니다.'}
+          <br />
+          {'다운로드 후, 파일을 확인해보세요!'}
+        </UploadWord>}
+        {file === '' && <UploadButton onClick={handleButtonClick}>
           <ButtonWord>
             내 파일 불러오기
           </ButtonWord>
           <input ref={fileInput} type='file' id='upload' name='upload' accept='.xls,.xlsx' style={{ display: 'none' }} onChange={handleChange} />
-        </UploadButton>
+        </UploadButton>}
+        {file != '' &&
+          <UploadButton onClick={download}>
+            <ButtonWord>
+              파일 다운로드
+            </ButtonWord>
+          </UploadButton>}
       </Third>
     </ChangerContainer>
   )

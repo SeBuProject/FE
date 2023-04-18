@@ -27,7 +27,7 @@ const Picture = () => {
             <img src='assets/img_excel_preview_before.svg' alt='사용전' />
           </div>
           <Button background="#6F7175">
-            사용전
+            사용 전
           </Button>
         </LeftContainer>
         <img style={{ marginBottom: "3rem" }} src='assets/Vector 2.svg' alt='사용후' />
@@ -36,7 +36,7 @@ const Picture = () => {
             <img src='assets/img_excel_preview_after.svg' alt='사용후' />
           </div>
           <Button background="#4174F5">
-            사용후
+            사용 후
           </Button>
         </RightContainer>
       </InnerContainer>

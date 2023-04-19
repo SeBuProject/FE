@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import { fileUpload, fileDownload } from '@/pages/api/apis';
+import { Spin } from 'antd';
 const ChangerContainer = styled.div`
   max-width: 64rem;
   text-align: center;
@@ -44,7 +45,8 @@ const Third = styled.div`
 `;
 
 const UploadImg = styled.div`
-  padding: 2.5rem 0;
+  padding: 2.25rem 0;
+  text-align: center;
 `;
 
 const UploadWord = styled.div`
@@ -59,7 +61,7 @@ const UploadWord = styled.div`
 
 const UploadButton = styled.button`
   border-radius: 0.875rem;
-  background: ${({ theme }) => theme.color.blue};
+  background: ${({ theme }) => theme.color.blue6};
   width: 30.75rem;
   height: 3.75rem;
   margin-top: 2rem;
@@ -91,12 +93,11 @@ const Changer = () => {
     if (e.target.files[0] != undefined) {
       let formData = new FormData();
       formData.append('file', e.target.files[0]);
-      console.log(formData);
       fileUpload(formData).then((res) => {
-        console.log(res);
-        setFile(res.data);
+        setFile('Loading')
+        setTimeout(() => setFile(res.data), 3000);
+        console.log(res.data);
       });
-      console.log(e.target.files[0]);
     }
   }
 
@@ -122,14 +123,24 @@ const Changer = () => {
       <Third>
         <UploadImg>
           {file === '' && <img src='assets/img_excel_upload_before.svg' alt='업로드 전' />}
-          {file != '' && <img src='assets/img_excel_upload_after.svg' alt='업로드 후' />}
+          {file === 'Loading' &&
+            <Spin size="large" style={{
+              paddingTop: ' 3.5rem',
+              width: '200px', height: '140px', marginBottom: '4.44px'
+            }} />}
+          {file != '' && file != 'Loading' && <img src='assets/img_excel_upload_after.svg' alt='업로드 후' />}
         </UploadImg>
         {file === '' && <UploadWord>
           {'사업자등록번호가 입력된 파일만 올리면'}
           <br />
           {'사업자 관련된 정보를 쉽게 불러올 수 있습니다.'}
         </UploadWord>}
-        {file != '' && <UploadWord>
+        {file === 'Loading' && <UploadWord>
+          {'파일 형태에 따라 시간이 조금 더 걸릴 수 있습니다.'}
+          <br />
+          {'조금만 기다려주세요!'}
+        </UploadWord>}
+        {file != '' && file != 'Loading' && <UploadWord>
           {'파일이 변환되었습니다.'}
           <br />
           {'다운로드 후, 파일을 확인해보세요!'}
@@ -140,7 +151,13 @@ const Changer = () => {
           </ButtonWord>
           <input ref={fileInput} type='file' id='upload' name='upload' accept='.xls,.xlsx' style={{ display: 'none' }} onChange={handleChange} />
         </UploadButton>}
-        {file != '' &&
+        {file === 'Loading' && <UploadButton style={{ background: '#25428C' }}>
+          <ButtonWord>
+            파일을 불러오는 중
+          </ButtonWord>
+          <input ref={fileInput} type='file' id='upload' name='upload' accept='.xls,.xlsx' style={{ display: 'none' }} onChange={handleChange} />
+        </UploadButton>}
+        {file != '' && file != 'Loading' &&
           <UploadButton onClick={download}>
             <ButtonWord>
               파일 다운로드

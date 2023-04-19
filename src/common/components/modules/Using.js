@@ -14,10 +14,6 @@ const UsingWord = styled.p`
   margin-bottom: 3rem;
 `;
 
-const SheetContainer = styled.div`
-
-`;
-
 const WordContainer = styled.span`
   color: ${({ theme }) => theme.color.gray12};
   font-family: 'Pretendard Variable';

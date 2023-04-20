@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useRef, useState } from 'react';
 import { fileUpload, fileDownload } from '@/pages/api/apis';
 import { Spin } from 'antd';
+import theme from '@/styles/theme';
+import { useRouter } from 'next/router';
 const ChangerContainer = styled.div`
   max-width: 64rem;
   text-align: center;
@@ -61,8 +63,8 @@ const UploadWord = styled.div`
 
 const UploadButton = styled.button`
   border-radius: 0.875rem;
-  background: ${({ theme }) => theme.color.blue6};
-  width: 30.75rem;
+  background: ${(props) => props.background || theme.color.blue6};
+  width:  ${(props) => props.width || "30.75rem"};
   height: 3.75rem;
   margin-top: 2rem;
   border: none;
@@ -74,26 +76,53 @@ const UploadButton = styled.button`
 `;
 
 const ButtonWord = styled.span`
-  color: ${({ theme }) => theme.color.white};
+  color: ${(props) => props.color || theme.color.white};
   font-family: 'Pretendard Variable';
   font-style: normal;
   font-weight: 700;
   font-size: 1.25rem;
 `;
+const MultiDown = styled.div`
+  text-align: center;
+  justify-content: space-between;
+  display: flex;
+  padding: 0 1.5rem;
+`;
+
+const FirstButton = styled.button`
+  color: ${({ theme }) => theme.color.blue6};
+  border: 1px solid ${theme.color.blue6};
+  width: 15rem;
+  height: 3.75rem;
+  background: ${theme.color.white};
+  margin-top: 2rem;
+  border-radius: 0.875rem;
+  cursor: pointer;
+`;
 
 const Changer = () => {
 
   const [file, setFile] = useState('');
+  const [downCnt, setCnt] = useState(0);
   const fileInput = useRef(null);
+  const router = useRouter();
 
+  //처음으로 클릭시
+  const reRender = () => {
+    router.reload();
+  }
+
+  //Input태그가 눌리게 하기
   const handleButtonClick = e => {
     fileInput.current.click();
   }
-  const handleChange = e => {
+
+  //Input file 바꾸기
+  const handleChange = async (e) => {
     if (e.target.files[0] != undefined) {
       let formData = new FormData();
       formData.append('file', e.target.files[0]);
-      fileUpload(formData).then((res) => {
+      await fileUpload(formData).then((res) => {
         setFile('Loading')
         setTimeout(() => setFile(res.data), 3000);
         console.log(res.data);
@@ -101,11 +130,11 @@ const Changer = () => {
     }
   }
 
-  const download = () => {
-    console.log(file);
-    fileDownload(file).then((res) => {
+  //다운로드 호출
+  const download = async () => {
+    await fileDownload(file).then((res) => {
+      setCnt(downCnt + 1);
       console.log(res);
-      alert('다운로드 되었습니다.');
     });
   }
 
@@ -157,12 +186,25 @@ const Changer = () => {
           </ButtonWord>
           <input ref={fileInput} type='file' id='upload' name='upload' accept='.xls,.xlsx' style={{ display: 'none' }} onChange={handleChange} />
         </UploadButton>}
-        {file != '' && file != 'Loading' &&
+        {file != '' && file != 'Loading' && downCnt === 0 &&
           <UploadButton onClick={download}>
             <ButtonWord>
               파일 다운로드
             </ButtonWord>
           </UploadButton>}
+        {file != '' && file != 'Loading' && downCnt >= 1 &&
+          <MultiDown>
+            <FirstButton onClick={reRender}>
+              <ButtonWord color={theme.color.blue6}>
+                처음으로
+              </ButtonWord>
+            </FirstButton>
+            <UploadButton width="15rem" onClick={download}>
+              <ButtonWord>
+                다시 다운로드
+              </ButtonWord>
+            </UploadButton>
+          </MultiDown>}
       </Third>
     </ChangerContainer>
   )

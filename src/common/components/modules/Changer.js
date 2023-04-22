@@ -1,15 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { fileUpload, fileDownload } from '@/pages/api/apis';
 import { Spin } from 'antd';
 import theme from '@/styles/theme';
 import { useRouter } from 'next/router';
+import Toast from '../elements/Toast';
 const ChangerContainer = styled.div`
   max-width: 64rem;
   text-align: center;
   margin:0 auto;
   width: 100%;
+  .show {
+        visibility: visible;     // 보이게
+        animation: fade-in 700ms, fade-out 700ms 2000ms      // 700ms동안 fade-in하고 2000ms 딜레이를 갖고 700ms동안 fade-out함
+    }
+    @keyframes fade-in {
+        // 투명도가 0부터 1로
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 0.9;
+        }
+    }
+    @keyframes fade-out {
+        // 투명도가 1에서 0으로
+        from {
+            opacity: 0.9;
+        }
+        to {
+            opacity: 0;
+        }
+    }
 `;
 const ExcelFont = styled.p`
   color: ${({ theme }) => theme.color.greenfont};
@@ -103,6 +126,7 @@ const FirstButton = styled.button`
 const Changer = () => {
 
   const [file, setFile] = useState('');
+  const [toast, setToast] = useState(false);
   const [downCnt, setCnt] = useState(0);
   const fileInput = useRef(null);
   const router = useRouter();
@@ -134,12 +158,24 @@ const Changer = () => {
   const download = async () => {
     await fileDownload(file).then((res) => {
       setCnt(downCnt + 1);
-      console.log(res);
+      setToast(true);
     });
   }
 
+  useEffect(() => {
+    if (toast) {
+      setTimeout(() => {
+        setToast(false);
+      }, 2700);
+    }
+  }, [toast]);
+
   return (
     <ChangerContainer>
+      {toast && <Toast>
+        <img src='assets/img_success_check.svg' alt='토스트' style={{ marginRight: "1rem" }} />
+        다운로드 폴더에 저장되었습니다. 지금 확인해 보세요!
+      </Toast>}
       <First>
         <img src='assets/img_excel.svg' alt='엑셀용' />
         <ExcelFont>

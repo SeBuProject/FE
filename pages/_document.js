@@ -32,6 +32,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
           <style />
         </Head>
         <body>

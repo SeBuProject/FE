@@ -1,6 +1,6 @@
 //파일 업로드
 export const fileUpload = async (data) => {
-    const apiUrl = 'http://localhost:8081/api/v1/contents/businessStatusInqr';
+    const apiUrl = 'http://15.165.109.251:8081/api/v1/contents/businessStatusInqr';
     return await fetch(apiUrl, {
         method: 'POST',
         // headers: {

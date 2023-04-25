@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
           <style />
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
         </Head>
         <body>
           <Main />

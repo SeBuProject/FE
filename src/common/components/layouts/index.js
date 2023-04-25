@@ -5,6 +5,19 @@ const Wrapper = styled.main`
   height: 100%;
   position: fixed;
   overflow-y: auto;
+  flex-flow: wrap;
+
+  @media(max-width: 768px){
+    .html{
+      font-size: 8px;
+    }
+  }
+
+  @media(max-width: 430px){
+    .html{
+      font-size: 2px;
+    }
+  }
 `;
 
 const Layout = ({ children }) => {

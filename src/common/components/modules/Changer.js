@@ -11,6 +11,7 @@ const ChangerContainer = styled.div`
   text-align: center;
   margin:0 auto;
   width: 100%;
+  flext-wrap: wrap;
   .show {
         visibility: visible;     // 보이게
         animation: fade-in 700ms, fade-out 700ms 2000ms      // 700ms동안 fade-in하고 2000ms 딜레이를 갖고 700ms동안 fade-out함
@@ -191,7 +192,7 @@ const Changer = () => {
           {file === 'Loading' &&
             <Spin size="large" style={{
               paddingTop: ' 3.5rem',
-              width: '200px', height: '140px', marginBottom: '4.44px'
+              width: '12.5rem', height: '8.75rem', marginBottom: '4.44px'
             }} />}
           {file != '' && file != 'Loading' && <img src='assets/img_excel_upload_after.svg' alt='업로드 후' />}
         </UploadImg>

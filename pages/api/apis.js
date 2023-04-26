@@ -1,5 +1,6 @@
 //파일 업로드
 export const fileUpload = async (data) => {
+    //http://localhost:8081/api/v1/contents/businessStatusInqr
     const apiUrl = 'https://www.sebu1.com/api/v1/contents/businessStatusInqr';
     return await fetch(apiUrl, {
         method: 'POST',

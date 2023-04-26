@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { fileUpload, fileDownload } from '@/pages/api/apis';
 import { Spin } from 'antd';
 import theme from '@/styles/theme';
 import { useRouter } from 'next/router';
 import Toast from '../elements/Toast';
+import * as XLSX from 'xlsx';
+
 const ChangerContainer = styled.div`
   max-width: 64rem;
   text-align: center;
@@ -149,19 +151,32 @@ const Changer = () => {
       formData.append('file', e.target.files[0]);
       await fileUpload(formData).then((res) => {
         setFile('Loading')
-        setTimeout(() => setFile(res.data), 3000);
+        setTimeout(() => {
+          setFile(res.data);
+        }, 3000);
         console.log(res.data);
       });
     }
   }
 
   //다운로드 호출
-  const download = async () => {
-    await fileDownload(file).then((res) => {
-      setCnt(downCnt + 1);
-      setToast(true);
-    });
-  }
+  const download = useCallback(() => {
+    // await fileDownload(file).then((res) => {
+    //   setCnt(downCnt + 1);
+    //   setToast(true);
+    // });
+    console.log(file);
+
+    //엑셀 다운로드
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.json_to_sheet(file);
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, '사업자 상태조회');
+    XLSX.writeFile(workbook, '사업자정보조회.xlsx');
+
+    setCnt(downCnt + 1);
+    setToast(true);
+  }, [file]);
 
   useEffect(() => {
     if (toast) {

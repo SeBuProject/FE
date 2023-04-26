@@ -1,6 +1,6 @@
 //파일 업로드
 export const fileUpload = async (data) => {
-    const apiUrl = 'https://sebu1.com/api/v1/contents/businessStatusInqr';
+    const apiUrl = 'https://www.sebu1.com/api/v1/contents/businessStatusInqr';
     return await fetch(apiUrl, {
         method: 'POST',
         // headers: {
@@ -14,7 +14,7 @@ export const fileUpload = async (data) => {
 
 //파일 엑셀 다운로드
 export const fileDownload = async (data) => {
-    const apiUrl = 'https://sebu1.com/api/v1/contents/downloadBusinessStatusInqrExcel';
+    const apiUrl = 'https://www.sebu1.com/api/v1/contents/downloadBusinessStatusInqrExcel';
     return await fetch(apiUrl, {
         method: 'POST',
         headers: {

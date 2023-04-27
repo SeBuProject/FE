@@ -150,11 +150,15 @@ const Changer = () => {
       let formData = new FormData();
       formData.append('file', e.target.files[0]);
       await fileUpload(formData).then((res) => {
-        setFile('Loading')
-        setTimeout(() => {
-          setFile(res.data);
-        }, 3000);
-        console.log(res.data);
+        if(res.code == '20000'){
+          console.log(res);
+          setFile('Loading')
+          setTimeout(() => {
+            setFile(res.data);
+          }, 3000);
+        }else{
+          console.log('변환에러 :',res);
+        }
       });
     }
   }
@@ -165,12 +169,35 @@ const Changer = () => {
     //   setCnt(downCnt + 1);
     //   setToast(true);
     // });
-    console.log(file);
+
+    var newFile = [];
+    var newJson = {};
+    file.map(function(i){
+      newJson.사업자등록번호 = i.b_no;
+      newJson.납세자상태 = i.b_stt;
+      newJson.과세유형메세지 = i.tax_type;
+      newJson.폐업일 = i.end_dt;
+      newJson.단위과세전환폐업여부 = i.utcc_yn;
+      newJson.최근과세유형전환일자 = i.tax_type_change_dt;
+      newJson.세금계산서적용일자 = i.invoice_apply_dt;
+      newFile.push(newJson);
+      newJson = {};
+    });
 
     //엑셀 다운로드
     const workbook = XLSX.utils.book_new();
-    const worksheet = XLSX.utils.json_to_sheet(file);
+    const worksheet = XLSX.utils.json_to_sheet(newFile);
+    
+    worksheet["!cols"] = [
+      { width : 30 } 
+    , { width : 30 }
+    , { width : 30 } 
+    , { width : 30 }
+    , { width : 30 } 
+    , { width : 30 } 
+    , { width : 30 } 
 
+]
     XLSX.utils.book_append_sheet(workbook, worksheet, '사업자 상태조회');
     XLSX.writeFile(workbook, '사업자정보조회.xlsx');
 

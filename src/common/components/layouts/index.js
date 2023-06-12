@@ -8,14 +8,14 @@ const Wrapper = styled.main`
   flex-flow: wrap;
 
   @media(max-width: 768px){
-    .html{
-      font-size: 8px;
+    html{
+      font-size: 9.5px;
     }
   }
 
   @media(max-width: 430px){
-    .html{
-      font-size: 2px;
+    html{
+      font-size: 8.5px;
     }
   }
 `;

@@ -7,6 +7,7 @@ import theme from '@/styles/theme';
 import { useRouter } from 'next/router';
 import Toast from '../elements/Toast';
 import * as XLSX from 'xlsx';
+import Image from 'next/image'
 
 const ChangerContainer = styled.div`
   max-width: 64rem;
@@ -150,14 +151,14 @@ const Changer = () => {
       let formData = new FormData();
       formData.append('file', e.target.files[0]);
       await fileUpload(formData).then((res) => {
-        if(res.code == '20000'){
+        if (res.code == '20000') {
           console.log(res);
           setFile('Loading')
           setTimeout(() => {
             setFile(res.data);
           }, 3000);
-        }else{
-          console.log('변환에러 :',res);
+        } else {
+          console.log('변환에러 :', res);
         }
       });
     }
@@ -172,7 +173,7 @@ const Changer = () => {
 
     var newFile = [];
     var newJson = {};
-    file.map(function(i){
+    file.map(function (i) {
       newJson.사업자등록번호 = i.b_no;
       newJson.납세자상태 = i.b_stt;
       newJson.과세유형메세지 = i.tax_type;
@@ -187,23 +188,23 @@ const Changer = () => {
     //엑셀 다운로드
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.json_to_sheet(newFile);
-    
-    worksheet["!cols"] = [
-      { width : 30 } 
-    , { width : 30 }
-    , { width : 30 } 
-    , { width : 30 }
-    , { width : 30 } 
-    , { width : 30 } 
-    , { width : 30 } 
 
-]
+    worksheet["!cols"] = [
+      { width: 30 }
+      , { width: 30 }
+      , { width: 30 }
+      , { width: 30 }
+      , { width: 30 }
+      , { width: 30 }
+      , { width: 30 }
+
+    ]
     XLSX.utils.book_append_sheet(workbook, worksheet, '사업자 상태조회');
     XLSX.writeFile(workbook, '사업자정보조회.xlsx');
 
     setCnt(downCnt + 1);
     setToast(true);
-  }, [file]);
+  }, [file, downCnt]);
 
   useEffect(() => {
     if (toast) {

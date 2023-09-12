@@ -7,7 +7,7 @@ const ChangerContainer = styled.div`
 `;
 
 const UsingWord = styled.p`
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 2.5rem;
@@ -16,7 +16,7 @@ const UsingWord = styled.p`
 
 const WordContainer = styled.span`
   color: ${({ theme }) => theme.color.gray12};
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 1.25rem;
@@ -24,7 +24,7 @@ const WordContainer = styled.span`
 
 const ColorWordContainer = styled.span`
   color: ${({ theme }) => theme.color.blue7};
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 1.25rem;

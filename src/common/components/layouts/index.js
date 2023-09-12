@@ -7,15 +7,33 @@ const Wrapper = styled.main`
   overflow-y: auto;
   flex-flow: wrap;
 
-  @media(max-width: 768px){
+  @media screen and (max-width: 768px){
     html{
       font-size: 9.5px;
+      flex-direction: column;
+    }
+    div{
+      font-size: 8.5px;
+      flex-direction: column;
+    }
+    p{
+      font-size: 8.5px;
+      flex-direction: column;
     }
   }
 
-  @media(max-width: 430px){
+  @media screen and (max-width: 430px){
     html{
       font-size: 8.5px;
+      flex-direction: column;
+    }
+    div{
+      font-size: 1rem;
+      flex-direction: column;
+    }
+    p{
+      font-size: 1rem;
+      flex-direction: column;
     }
   }
 `;

@@ -217,11 +217,11 @@ const Changer = () => {
   return (
     <ChangerContainer>
       {toast && <Toast>
-        <img src='assets/img_success_check.svg' alt='토스트' style={{ marginRight: "1rem" }} />
+        <img src='assets/img_success_check.svg' alt='토스트' style={{ marginRight: "1rem", maxWidth: "100%", height: "auto" }} />
         다운로드 폴더에 저장되었습니다. 지금 확인해 보세요!
       </Toast>}
       <First>
-        <img src='assets/img_excel.svg' alt='엑셀용' />
+        <img src='assets/img_excel.svg' alt='엑셀용' style={{ maxWidth: "100%", height: "auto" }} />
         <ExcelFont>
           엑셀용
         </ExcelFont>

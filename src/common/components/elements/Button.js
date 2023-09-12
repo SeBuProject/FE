@@ -13,6 +13,7 @@ const StyledButton = styled.button`
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 100px;
+    font-family: 'Pretendard';
 
     /*크기*/
     height: 2.25rem;

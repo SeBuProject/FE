@@ -41,7 +41,7 @@ const ChangerContainer = styled.div`
 const ExcelFont = styled.p`
   color: ${({ theme }) => theme.color.greenfont};
   font-size: 1.25rem;
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 600;
   margin: 2px 0px 0 2px;
@@ -56,7 +56,7 @@ const First = styled.div`
 `;
 
 const Second = styled.p`
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 2.5rem;
@@ -79,7 +79,7 @@ const UploadImg = styled.div`
 `;
 
 const UploadWord = styled.div`
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -104,7 +104,7 @@ const UploadButton = styled.button`
 
 const ButtonWord = styled.span`
   color: ${(props) => props.color || theme.color.white};
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 1.25rem;

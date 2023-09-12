@@ -13,7 +13,7 @@ const ButtonContainer = styled.button`
     width: 28.375rem;
     padding 1rem 1.5rem;
     z-index: 1;
-    font-family: 'Pretendard Variable';
+    font-family: 'Pretendard';
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;

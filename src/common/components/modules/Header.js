@@ -17,16 +17,16 @@ const BarContainer = styled.span`
   line-height: 3.5rem;
   font-weight: 400;
   font-style: normal;
-  font-family: 'Pretendard Variable';
+  font-family: 'Pretendard';
   color: ${({ theme }) => theme.color.gray7};
 `;
 const Header = () => {
   return (
     <HeaderContainer>
-      <img src='assets/bi_navigation.svg' alt='로고'/>
+      <img src='assets/bi_navigation.svg' alt='로고' />
       <BarContainer>
         {'로그인 없이 편하게 이용하세요'}
-      </BarContainer>  
+      </BarContainer>
     </HeaderContainer>
   )
 }

@@ -10,6 +10,12 @@ const HeaderContainer = styled.div`
   width: 100%;
   text-align: center;
   padding: 0 1.25rem;
+  
+  @media(max-width: 767px){
+    padding: 0 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
 `;
 
 const BarContainer = styled.span`
@@ -19,6 +25,12 @@ const BarContainer = styled.span`
   font-style: normal;
   font-family: 'Pretendard';
   color: ${({ theme }) => theme.color.gray7};
+
+  @media(max-width: 767px){
+    line-height: 2.5rem;
+    font-size: 0.9rem;
+    margin-right: 0.4rem;
+  }
 `;
 const Header = () => {
   return (

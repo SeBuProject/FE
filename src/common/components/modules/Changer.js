@@ -48,7 +48,7 @@ const ExcelFont = styled.p`
 `;
 
 const First = styled.div`
-  padding-top: 3.75rem;
+  padding-top: 2.5rem;
   vertical-align: middle;
   display: flex;
   justify-content: center;
@@ -71,6 +71,10 @@ const Third = styled.div`
   text-align: center;
   border-radius: 1.25rem;
   margin:0 auto;
+
+  @media(max-width: 767px){
+    width: 80%;
+  }
 `;
 
 const UploadImg = styled.div`
@@ -86,6 +90,12 @@ const UploadWord = styled.div`
   margin: 0 5.5rem;
   line-height: 1.5rem;
   color: ${({ theme }) => theme.color.gray9};
+
+  @media (max-width: 767px){
+    width: 100%;
+    font-size: 0.5rem;
+    margin: 0 0;
+  }
 `;
 
 const UploadButton = styled.button`
@@ -99,6 +109,10 @@ const UploadButton = styled.button`
 
   &:active{
     opacity:0.5;
+  }
+
+  @media(max-width: 767px){
+    width: 80%;
   }
 `;
 

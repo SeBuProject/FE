@@ -6,6 +6,8 @@ const Wrapper = styled.main`
   position: fixed;
   overflow-y: auto;
   flex-flow: wrap;
+  left: 0;
+  bottom: 0;
 
   @media screen and (max-width: 768px){
     html{

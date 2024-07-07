@@ -33,6 +33,16 @@ const ColorWordContainer = styled.span`
 const ImageContainer = styled.div`
   margin: 1.25rem 1rem 1.25rem 0.5rem;
 `;
+
+const Word = styled.p`
+  text-align: left;
+  margin: 1rem 0 22px 15.75rem;
+  
+  @media(max-width: 767px){
+    margin: 1rem 0 22px 2rem;
+  }
+`;
+
 const Using = () => {
   return (
     <ChangerContainer>
@@ -54,14 +64,14 @@ const Using = () => {
           </ColorWordContainer>
         </WordContainer>
       </ContentButton>
-      <p style={{ marginBottom: "22px", marginTop: "1rem", marginLeft: "15.75rem", textAlign: "left" }}>
+      <Word>
         <span style={{ color: `${theme.color.gray8}` }}>
           - 사업자등록번호는
         </span>
         <span style={{ color: `${theme.color.violet}` }}>
           {' '}첫번째 시트에만 넣어주세요.
         </span>
-      </p>
+      </Word>
       <p style={{ margin: "1.625rem" }}>
         <img src='assets/Vector.svg' alt='화살표' />
       </p>

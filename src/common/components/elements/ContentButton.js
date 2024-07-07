@@ -32,6 +32,11 @@ const StyledButton = styled.button`
     & + & {
         margin-left: 1rem;
     }
+
+    @media(max-width: 767px){
+      width: 90%;
+      font-size: 0.5rem;
+    }
 `
 function ContentButton({ children, ...rest }) {
     return <StyledButton {...rest}>{children}</StyledButton>

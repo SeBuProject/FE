@@ -9,15 +9,30 @@ const PictureContainer = styled.div`
 const InnerContainer = styled.span`
   display: flex;
   justify-content: space-between;
+  padding: 0 1rem;
 `;
 
 const LeftContainer = styled.span`
   margin-top: 0.75rem;
+  margin-bottom: 1.75rem;
+  @media(max-width : 767px){
+    margin-top: 0.3rem;
+  }
 `;
 
 const RightContainer = styled.span`
 
 `;
+
+const DirectImage = styled.img`
+  height: auto;
+  margin-bottom: 3rem;
+
+  @media(max-width: 767px){
+    margin: 0 0.5rem 6rem 0.5rem;
+  }
+`;
+
 const Picture = () => {
   return (
     <PictureContainer>
@@ -30,9 +45,9 @@ const Picture = () => {
             사용 전
           </Button>
         </LeftContainer>
-        <img style={{ marginBottom: "3rem", maxWidth: "100%", height: "auto" }} src='assets/Vector 2.svg' alt='화살표' />
+        <DirectImage src='assets/Vector 2.svg' alt='화살표' />
         <RightContainer>
-          <div style={{ marginBottom: "1.25rem" }}>
+          <div style={{ marginBottom: `${window.maxWidth < "767px" ? "1.25rem" : '1.5rem'}` }} className=''>
             <img src='assets/img_excel_preview_after.svg' alt='사용후' style={{ maxWidth: "100%", height: "auto" }} />
           </div>
           <Button background="#4174F5">

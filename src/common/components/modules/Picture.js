@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../elements/Button';
+import { useEffect } from 'react';
 const PictureContainer = styled.div`
   margin-top: 5rem;
   margin-bottom: 11.25rem;
@@ -38,8 +39,8 @@ const Picture = () => {
     <PictureContainer>
       <InnerContainer>
         <LeftContainer>
-          <div style={{ marginBottom: "1.75rem" }}>
-            <img src='assets/img_excel_preview_before.svg' alt='사용전' style={{ maxWidth: "100%", height: "auto" }} />
+          <div style={{ marginBottom: "1.5rem" }}>
+            <img src='assets/img_excel_preview_before.svg' alt='사용전' style={{ maxWidth: "100%", height: "auto", marginBottom: "0.25rem" }} />
           </div>
           <Button background="#6F7175">
             사용 전
@@ -47,7 +48,7 @@ const Picture = () => {
         </LeftContainer>
         <DirectImage src='assets/Vector 2.svg' alt='화살표' />
         <RightContainer>
-          <div style={{ marginBottom: `${window.maxWidth < "767px" ? "1.25rem" : '1.5rem'}` }} className=''>
+          <div style={{ marginBottom: "1.5rem" }} className=''>
             <img src='assets/img_excel_preview_after.svg' alt='사용후' style={{ maxWidth: "100%", height: "auto" }} />
           </div>
           <Button background="#4174F5">
